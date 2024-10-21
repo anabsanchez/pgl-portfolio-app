@@ -1,19 +1,6 @@
 import { StyleSheet, ScrollView, Text, Image, View } from "react-native";
 import React from "react";
-
-const hobbies = [
-  { text: "Salir a pasear" },
-  { text: "Ir a la playita" },
-  { text: "Domingos de misa" },
-  { text: "La guitarrita" },
-  { text: "El monte con lluvia" },
-  { text: "Viajar" },
-  { text: "Música variadita" },
-  { text: "Anime" },
-  { text: "Ducharme" },
-  { text: "Videojuegos" },
-  { text: "Ir de cenar romántica" },
-];
+import Hobbies from "../data/Hobbies";
 
 const Info = () => {
   return (
@@ -34,7 +21,7 @@ const Info = () => {
       <Text style={styles.hobbiesTitle}>cosas que me gustan mucho:</Text>
 
       <ScrollView style={{ padding: 10 }}>
-        {hobbies.map((hobby) => {
+        {Hobbies.map((hobby) => {
           return (
             <ScrollView>
               <Text style={styles.hobbies}>{hobby.text}</Text>

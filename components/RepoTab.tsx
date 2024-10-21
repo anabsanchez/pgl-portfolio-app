@@ -1,5 +1,5 @@
-import { Text, StyleSheet, View } from "react-native";
-import React, { Component } from "react";
+import { StyleSheet, View } from "react-native";
+import React from "react";
 import QRCode from "react-native-qrcode-svg";
 
 const RepoTab = () => {
