@@ -2,7 +2,7 @@ import { Text, Button, StyleSheet, View } from "react-native";
 import React from "react";
 
 export type HeaderProps = {
-  displayQR: Boolean;
+  displayQR: boolean;
   setDisplayQR: Function;
 };
 
@@ -14,12 +14,12 @@ const Header = ({ displayQR, setDisplayQR }: HeaderProps) => {
         <Button
           onPress={() => setDisplayQR(true)}
           title="Mi Info"
-          color="rgba(0, 0, 0, 1)"
+          color={displayQR ? "rgba(0, 0, 0, 1)" : "rgba(0, 0, 0, 0.1)"}
         />
         <Button
           onPress={() => setDisplayQR(false)}
           title="Mi Repo"
-          color="rgba(0, 0, 0, 0.1)"
+          color={!displayQR ? "rgba(0, 0, 0, 1)" : "rgba(0, 0, 0, 0.1)"}
         />
       </View>
     </View>
@@ -41,7 +41,6 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     textAlignVertical: "center",
     fontSize: 30,
-
     textTransform: "uppercase",
   },
   headerButtons: {
@@ -52,16 +51,5 @@ const styles = StyleSheet.create({
     paddingRight: 75,
     paddingTop: 4,
     alignItems: "center",
-  },
-  buttonOnPress: {},
-  buttonText: {
-    color: "white",
-    fontWeight: "bold",
-    textTransform: "uppercase",
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 7 },
-    shadowOpacity: 0.43,
-    shadowRadius: 9.51,
-    elevation: 15,
   },
 });

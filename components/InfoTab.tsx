@@ -1,13 +1,6 @@
-import {
-  StyleSheet,
-  ScrollView,
-  Text,
-  Image,
-  View,
-  ImageBackground,
-} from "react-native";
+import { StyleSheet, Text, Image, View, ImageBackground } from "react-native";
 import React from "react";
-import Hobbies from "../data/Hobbies";
+import Hobbies from "./Hobbies";
 
 const Info = () => {
   return (
@@ -15,6 +8,7 @@ const Info = () => {
       <ImageBackground
         source={require("../assets/images/background/SolarSystem.jpg")}
         resizeMode="cover"
+        style={styles.background}
       >
         <View style={styles.descriptionContainer}>
           <Image
@@ -30,21 +24,7 @@ const Info = () => {
             </Text>
           </View>
         </View>
-        <View style={styles.hobbiesContainer}>
-          <Text style={styles.hobbiesTitle}>
-            Now, here's some of the stuff i enjoy:
-          </Text>
-
-          <ScrollView style={styles.hobbiesList}>
-            {Hobbies.map((hobby) => {
-              return (
-                <ScrollView>
-                  <Text style={styles.hobbies}>{hobby.text}</Text>
-                </ScrollView>
-              );
-            })}
-          </ScrollView>
-        </View>
+        <Hobbies />
       </ImageBackground>
     </View>
   );
@@ -56,6 +36,9 @@ const styles = StyleSheet.create({
   infoTab: {
     width: "100%",
     height: "100%",
+  },
+  background: {
+    flex: 1,
   },
   avatar: {
     height: 100,
@@ -90,36 +73,5 @@ const styles = StyleSheet.create({
     textAlign: "justify",
     fontSize: 12,
     color: "white",
-  },
-  hobbiesContainer: {
-    width: 300,
-    backgroundColor: "rgba(40, 40, 40, 0.3)",
-
-    alignSelf: "center",
-    borderRadius: 5,
-    marginTop: 20,
-  },
-  hobbiesTitle: {
-    color: "white",
-    fontWeight: "800",
-    fontSize: 14,
-    textAlign: "center",
-    marginTop: 10,
-  },
-  hobbiesList: {
-    padding: 10,
-    width: 300,
-    alignSelf: "center",
-  },
-  hobbies: {
-    padding: 15,
-    color: "white",
-    textAlign: "center",
-    fontWeight: "bold",
-    fontStyle: "italic",
-    fontSize: 16,
-    backgroundColor: "rgba(200, 200, 200, 0.1)",
-    margin: 5,
-    borderRadius: 5,
   },
 });
