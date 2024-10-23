@@ -10,9 +10,14 @@ const hobbiesData = [
   { text: "Traveling the world." },
   { text: "Learning about anatomy, astronomy (or anything, really)." },
   { text: "Watching movies and series." },
-  { text: "Going to the beach and being able to swim." },
+  {
+    text: "Going to the beach and being able to swim (weather isn't very helpful, usually).",
+  },
   { text: "Reaching a deep understanding of math, physics or informatics." },
   { text: "Going hiking and being in awe of amazing landscapes." },
+  { text: "..." },
+  { text: "..." },
+  { text: "..." },
 ];
 
 const Hobbies = () => {
