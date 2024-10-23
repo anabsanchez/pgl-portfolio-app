@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { StyleSheet, View } from "react-native";
+import { ImageBackground, StyleSheet, View } from "react-native";
 import Header from "./components/Header";
 import InfoTab from "./components/InfoTab";
 import RepoTab from "./components/RepoTab";
@@ -9,7 +9,7 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <Header setDisplayQR={setDisplayQR} />
+      <Header displayQR={displayQR} setDisplayQR={setDisplayQR} />
       <View style={styles.body}>{displayQR ? <InfoTab /> : <RepoTab />}</View>
     </View>
   );
@@ -24,10 +24,9 @@ const styles = StyleSheet.create({
   },
   body: {
     width: "100%",
-    borderWidth: 2,
-    borderColor: "black",
     alignItems: "center",
     justifyContent: "space-between",
     height: "85%",
+    marginTop: 10,
   },
 });
