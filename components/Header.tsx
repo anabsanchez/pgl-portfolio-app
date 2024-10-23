@@ -2,23 +2,24 @@ import { Text, Button, StyleSheet, View } from "react-native";
 import React from "react";
 
 export type HeaderProps = {
+  displayQR: Boolean;
   setDisplayQR: Function;
 };
 
-const Header = ({ setDisplayQR }: HeaderProps) => {
+const Header = ({ displayQR, setDisplayQR }: HeaderProps) => {
   return (
     <View style={styles.header}>
-      <Text style={styles.headerTitle}>My Portfolio App</Text>
+      <Text style={styles.headerTitle}>My Portfolio</Text>
       <View style={styles.headerButtons}>
         <Button
           onPress={() => setDisplayQR(true)}
           title="Mi Info"
-          color="lightgray"
+          color="rgba(0, 0, 0, 1)"
         />
         <Button
           onPress={() => setDisplayQR(false)}
           title="Mi Repo"
-          color="lightgray"
+          color="rgba(0, 0, 0, 0.1)"
         />
       </View>
     </View>
@@ -34,23 +35,25 @@ const styles = StyleSheet.create({
     width: "100%",
   },
   headerTitle: {
-    backgroundColor: "gray",
+    backgroundColor: "black",
+    color: "white",
     textAlign: "center",
     fontWeight: "bold",
     textAlignVertical: "center",
     fontSize: 30,
+
+    textTransform: "uppercase",
   },
   headerButtons: {
     flexDirection: "row",
-    backgroundColor: "darkgray",
+    backgroundColor: "#352727",
     justifyContent: "space-between",
     paddingLeft: 75,
     paddingRight: 75,
+    paddingTop: 4,
     alignItems: "center",
   },
-  buttonContainer: {
-    width: "50%",
-  },
+  buttonOnPress: {},
   buttonText: {
     color: "white",
     fontWeight: "bold",
