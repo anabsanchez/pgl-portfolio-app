@@ -2,7 +2,7 @@ import { Text, Button, StyleSheet, View } from "react-native";
 import React from "react";
 
 export type HeaderProps = {
-  displayQR: boolean;
+  displayQR: Boolean;
   setDisplayQR: Function;
 };
 
@@ -14,12 +14,12 @@ const Header = ({ displayQR, setDisplayQR }: HeaderProps) => {
         <Button
           onPress={() => setDisplayQR(true)}
           title="Mi Info"
-          color={displayQR ? "rgba(0, 0, 0, 1)" : "rgba(0, 0, 0, 0.1)"}
+          color={displayQR ? "rgba(0, 0, 0, 1)" : "rgba(255, 165, 0, 0)"}
         />
         <Button
           onPress={() => setDisplayQR(false)}
           title="Mi Repo"
-          color={!displayQR ? "rgba(0, 0, 0, 1)" : "rgba(0, 0, 0, 0.1)"}
+          color={!displayQR ? "rgba(0, 0, 0, 1)" : "rgba(255, 165, 0, 0)"}
         />
       </View>
     </View>
@@ -35,17 +35,18 @@ const styles = StyleSheet.create({
     width: "100%",
   },
   headerTitle: {
-    backgroundColor: "black",
-    color: "white",
+    backgroundColor: "#000",
+    color: "rgba(255, 165, 0, 0.9)",
     textAlign: "center",
-    fontWeight: "bold",
     textAlignVertical: "center",
     fontSize: 30,
     textTransform: "uppercase",
+    marginTop: -3,
+    marginBottom: 3,
   },
   headerButtons: {
     flexDirection: "row",
-    backgroundColor: "#352727",
+    backgroundColor: "rgba(255, 165, 0, 0.5)",
     justifyContent: "space-between",
     paddingLeft: 75,
     paddingRight: 75,
