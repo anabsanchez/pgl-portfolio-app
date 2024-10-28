@@ -20,7 +20,11 @@ const hobbiesData = [
   { text: "..." },
 ];
 
-const Hobbies = () => {
+export type HobbiesProps = {
+  lightTheme: boolean;
+};
+
+const Hobbies = ({ lightTheme }: HobbiesProps) => {
   return (
     <View style={styles.hobbiesContainer}>
       <Text style={styles.hobbiesTitle}>

@@ -2,11 +2,19 @@ import { StyleSheet, Text, Image, View, ImageBackground } from "react-native";
 import React from "react";
 import Hobbies from "./Hobbies";
 
-const Info = () => {
+export type InfoProps = {
+  lightTheme: boolean;
+};
+
+const Info = ({ lightTheme }: InfoProps) => {
   return (
     <View style={styles.infoTab}>
       <ImageBackground
-        source={require("../assets/images/background/SolarSystem.jpg")}
+        source={
+          lightTheme
+            ? require("../assets/images/background/BlindingSun(perfect for light theme).jpeg")
+            : require("../assets/images/background/SolarSystem.jpg")
+        }
         resizeMode="cover"
         style={styles.background}
       >
@@ -24,7 +32,7 @@ const Info = () => {
             </Text>
           </View>
         </View>
-        <Hobbies />
+        <Hobbies lightTheme={lightTheme} />
       </ImageBackground>
     </View>
   );

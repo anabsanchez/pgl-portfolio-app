@@ -2,11 +2,19 @@ import { ImageBackground, StyleSheet, View } from "react-native";
 import React from "react";
 import QRCode from "react-native-qrcode-svg";
 
-const RepoTab = () => {
+export type RepoProps = {
+  lightTheme: boolean;
+};
+
+const Repo = ({ lightTheme }: RepoProps) => {
   return (
     <View style={styles.repoTab}>
       <ImageBackground
-        source={require("../assets/images/background/SolarSystem.jpg")}
+        source={
+          lightTheme
+            ? require("../assets/images/background/BlindingSun(perfect for light theme).jpeg")
+            : require("../assets/images/background/SolarSystem.jpg")
+        }
         resizeMode="cover"
         style={styles.background}
       >
@@ -20,7 +28,7 @@ const RepoTab = () => {
   );
 };
 
-export default RepoTab;
+export default Repo;
 
 const styles = StyleSheet.create({
   repoTab: {
