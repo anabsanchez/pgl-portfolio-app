@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
   descriptionContainer: {
     flexDirection: "row",
     alignItems: "center",
-    backgroundColor: "rgba(240, 240, 240, 0.1)",
+    backgroundColor: "rgba(40, 40, 40, 0.5)",
     height: 100,
     padding: 5,
     paddingRight: 16,

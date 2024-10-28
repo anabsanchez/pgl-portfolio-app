@@ -42,7 +42,7 @@ export default Hobbies;
 const styles = StyleSheet.create({
   hobbiesContainer: {
     width: 300,
-    backgroundColor: "rgba(40, 40, 40, 0.3)",
+    backgroundColor: "rgba(40, 40, 40, 0.4)",
     alignSelf: "center",
     borderRadius: 5,
     marginTop: 20,
@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
   },
   hobbyItem: {
     padding: 15,
-    backgroundColor: "rgba(200, 200, 200, 0.1)",
+    backgroundColor: "rgba(255, 165, 0, 0.1)",
     margin: 5,
     borderRadius: 5,
   },
