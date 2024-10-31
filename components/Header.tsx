@@ -1,25 +1,56 @@
 import { Text, Button, StyleSheet, View } from "react-native";
 import React from "react";
+import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
+import { LIGHT_THEME, DARK_THEME } from "../utils/ThemeColors";
 
 export type HeaderProps = {
-  displayQR: Boolean;
-  setDisplayQR: Function;
+  displayQR: boolean;
+  setDisplayQR: (value: boolean) => void;
+  lightTheme: boolean;
+  setLightTheme: (value: boolean) => void;
 };
 
-const Header = ({ displayQR, setDisplayQR }: HeaderProps) => {
+const Header = ({
+  displayQR,
+  setDisplayQR,
+  lightTheme,
+  setLightTheme,
+}: HeaderProps) => {
+  const themeColors = lightTheme ? LIGHT_THEME : DARK_THEME;
+
   return (
-    <View style={styles.header}>
-      <Text style={styles.headerTitle}>My Portfolio</Text>
-      <View style={styles.headerButtons}>
+    <View
+      style={[styles.header, { backgroundColor: themeColors.headerBackground }]}
+    >
+      <View style={styles.headerTop}>
+        <Text style={styles.headerTitle}>My Portfolio</Text>
+
+        <View>
+          <MaterialCommunityIcons
+            name="theme-light-dark"
+            size={24}
+            color="white"
+            onPress={() => setLightTheme(!lightTheme)}
+          />
+        </View>
+      </View>
+
+      <View
+        style={[
+          styles.headerButtons,
+          { backgroundColor: themeColors.buttonsBackground },
+        ]}
+      >
         <Button
           onPress={() => setDisplayQR(true)}
           title="Mi Info"
-          color={displayQR ? "rgba(0, 0, 0, 1)" : "rgba(255, 165, 0, 0)"}
+          color={displayQR ? themeColors.currentTab : themeColors.otherTab}
         />
+
         <Button
           onPress={() => setDisplayQR(false)}
           title="Mi Repo"
-          color={!displayQR ? "rgba(0, 0, 0, 1)" : "rgba(255, 165, 0, 0)"}
+          color={!displayQR ? themeColors.currentTab : themeColors.otherTab}
         />
       </View>
     </View>
@@ -34,11 +65,16 @@ const styles = StyleSheet.create({
     paddingTop: 50,
     width: "100%",
   },
+  headerTop: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    color: "white",
+    paddingLeft: 85,
+    paddingRight: 20,
+  },
   headerTitle: {
-    backgroundColor: "#000",
-    color: "rgba(255, 165, 0, 0.9)",
-    textAlign: "center",
-    textAlignVertical: "center",
+    color: "white",
     fontSize: 30,
     textTransform: "uppercase",
     marginTop: -3,
@@ -46,11 +82,12 @@ const styles = StyleSheet.create({
   },
   headerButtons: {
     flexDirection: "row",
-    backgroundColor: "rgba(255, 165, 0, 0.5)",
     justifyContent: "space-between",
     paddingLeft: 75,
     paddingRight: 75,
     paddingTop: 4,
-    alignItems: "center",
+  },
+  themeIcon: {
+    color: "white",
   },
 });

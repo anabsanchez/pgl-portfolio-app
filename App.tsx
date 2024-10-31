@@ -1,16 +1,29 @@
-import { useState } from "react";
-import { ImageBackground, StyleSheet, View } from "react-native";
+import { createContext, useState } from "react";
+import { StyleSheet, View } from "react-native";
 import Header from "./components/Header";
 import InfoTab from "./components/InfoTab";
-import RepoTab from "./components/RepoTab";
+import Repo from "./components/RepoTab";
 
 export default function App() {
   const [displayQR, setDisplayQR] = useState(true);
+  const [lightTheme, setLightTheme] = useState(true);
 
   return (
     <View style={styles.container}>
-      <Header displayQR={displayQR} setDisplayQR={setDisplayQR} />
-      <View style={styles.body}>{displayQR ? <InfoTab /> : <RepoTab />}</View>
+      <Header
+        displayQR={displayQR}
+        setDisplayQR={setDisplayQR}
+        lightTheme={lightTheme}
+        setLightTheme={setLightTheme}
+      />
+
+      <View style={styles.body}>
+        {displayQR ? (
+          <InfoTab lightTheme={lightTheme} />
+        ) : (
+          <Repo lightTheme={lightTheme} />
+        )}
+      </View>
     </View>
   );
 }
