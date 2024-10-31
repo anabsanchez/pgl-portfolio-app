@@ -1,13 +1,14 @@
 import { StyleSheet, Text, Image, View, ImageBackground } from "react-native";
 import React from "react";
 import Hobbies from "./Hobbies";
+import {
+  LIGHT_THEME_BACKGROUND,
+  DARK_THEME_BACKGROUND,
+} from "../utils/ThemeColors";
 
 export type InfoProps = {
   lightTheme: boolean;
 };
-
-const LIGHT_THEME_BACKGROUND = "rgba(150, 40, 40, .3)";
-const DARK_THEME_BACKGROUND = "rgba(40, 40, 40, 0.5)";
 
 const Info = ({ lightTheme }: InfoProps) => {
   return (
@@ -35,8 +36,10 @@ const Info = ({ lightTheme }: InfoProps) => {
             style={styles.avatar}
             source={require("../assets/images/profile/AnaSanchez.jpeg")}
           />
+
           <View style={styles.descriptionBox}>
             <Text style={styles.descriptionTitle}>Hey there, this is Ana!</Text>
+
             <Text style={styles.description}>
               I'm just a programming student trying to figure out my way into
               this crazy world of ones and zeros, despite my teacher's efforts
@@ -44,6 +47,7 @@ const Info = ({ lightTheme }: InfoProps) => {
             </Text>
           </View>
         </View>
+
         <Hobbies lightTheme={lightTheme} />
       </ImageBackground>
     </View>
@@ -69,20 +73,17 @@ const styles = StyleSheet.create({
   descriptionContainer: {
     flexDirection: "row",
     alignItems: "center",
-    backgroundColor: "rgba(40, 40, 40, 0.5)",
     height: 100,
     padding: 5,
     paddingRight: 16,
     borderRadius: 10,
     marginTop: 30,
-    marginLeft: 20,
-    marginRight: 20,
+    marginHorizontal: 20,
     marginBottom: 10,
   },
   descriptionBox: {
     width: "70%",
     margin: 10,
-    fontSize: 10,
   },
   descriptionTitle: {
     fontWeight: "700",

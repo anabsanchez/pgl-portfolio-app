@@ -1,26 +1,13 @@
 import { Text, Button, StyleSheet, View } from "react-native";
-import React, { useContext } from "react";
+import React from "react";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
+import { LIGHT_THEME, DARK_THEME } from "../utils/ThemeColors";
 
 export type HeaderProps = {
-  displayQR: Boolean;
-  setDisplayQR: Function;
-  lightTheme: Boolean;
-  setLightTheme: Function;
-};
-
-const LIGHT_THEME = {
-  currentTab: "rgba(68, 15, 7, 1)",
-  otherTab: "rgba(239, 94, 47, 1)",
-  buttonsBackground: "rgba(239, 86, 47, 1)",
-  headerBackground: "rgba(239, 86, 47, .9)",
-};
-
-const DARK_THEME = {
-  currentTab: "rgba(0, 0, 0, 1)",
-  otherTab: "rgba(114, 158, 193, .5)",
-  buttonsBackground: "rgba(37, 46, 61, 1)",
-  headerBackground: "rgba(37, 46, 61, .6)",
+  displayQR: boolean;
+  setDisplayQR: (value: boolean) => void;
+  lightTheme: boolean;
+  setLightTheme: (value: boolean) => void;
 };
 
 const Header = ({
@@ -29,14 +16,15 @@ const Header = ({
   lightTheme,
   setLightTheme,
 }: HeaderProps) => {
-  // const theme = useContext(ThemeContext);
   const themeColors = lightTheme ? LIGHT_THEME : DARK_THEME;
+
   return (
     <View
       style={[styles.header, { backgroundColor: themeColors.headerBackground }]}
     >
       <View style={styles.headerTop}>
         <Text style={styles.headerTitle}>My Portfolio</Text>
+
         <View>
           <MaterialCommunityIcons
             name="theme-light-dark"
@@ -58,6 +46,7 @@ const Header = ({
           title="Mi Info"
           color={displayQR ? themeColors.currentTab : themeColors.otherTab}
         />
+
         <Button
           onPress={() => setDisplayQR(false)}
           title="Mi Repo"
@@ -86,8 +75,6 @@ const styles = StyleSheet.create({
   },
   headerTitle: {
     color: "white",
-    textAlign: "center",
-    textAlignVertical: "center",
     fontSize: 30,
     textTransform: "uppercase",
     marginTop: -3,
@@ -99,7 +86,6 @@ const styles = StyleSheet.create({
     paddingLeft: 75,
     paddingRight: 75,
     paddingTop: 4,
-    alignItems: "center",
   },
   themeIcon: {
     color: "white",
