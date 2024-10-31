@@ -6,6 +6,9 @@ export type InfoProps = {
   lightTheme: boolean;
 };
 
+const LIGHT_THEME_BACKGROUND = "rgba(150, 40, 40, .3)";
+const DARK_THEME_BACKGROUND = "rgba(40, 40, 40, 0.5)";
+
 const Info = ({ lightTheme }: InfoProps) => {
   return (
     <View style={styles.infoTab}>
@@ -18,7 +21,16 @@ const Info = ({ lightTheme }: InfoProps) => {
         resizeMode="cover"
         style={styles.background}
       >
-        <View style={styles.descriptionContainer}>
+        <View
+          style={[
+            styles.descriptionContainer,
+            {
+              backgroundColor: lightTheme
+                ? LIGHT_THEME_BACKGROUND
+                : DARK_THEME_BACKGROUND,
+            },
+          ]}
+        >
           <Image
             style={styles.avatar}
             source={require("../assets/images/profile/AnaSanchez.jpeg")}

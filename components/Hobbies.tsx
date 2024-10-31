@@ -20,19 +20,42 @@ const hobbiesData = [
   { text: "..." },
 ];
 
+const LIGHT_THEME = {
+  containerBackground: "rgba(150, 40, 40, .3)",
+  itemBackground: "rgba(255, 165, 0, 0.3)",
+};
+
+const DARK_THEME = {
+  containerBackground: "rgba(40, 40, 40, 0.4)",
+  itemBackground: "rgba(255, 165, 0, 0.1)",
+};
+
 export type HobbiesProps = {
   lightTheme: boolean;
 };
 
 const Hobbies = ({ lightTheme }: HobbiesProps) => {
+  const themeColors = lightTheme ? LIGHT_THEME : DARK_THEME;
+
   return (
-    <View style={styles.hobbiesContainer}>
+    <View
+      style={[
+        styles.hobbiesContainer,
+        { backgroundColor: themeColors.containerBackground },
+      ]}
+    >
       <Text style={styles.hobbiesTitle}>
         Now, here's some of the stuff I enjoy:
       </Text>
       <ScrollView style={styles.hobbiesList}>
         {hobbiesData.map((hobby, index) => (
-          <View key={index} style={styles.hobbyItem}>
+          <View
+            key={index}
+            style={[
+              styles.hobbyItem,
+              { backgroundColor: themeColors.itemBackground },
+            ]}
+          >
             <Text style={styles.hobbyText}>{hobby.text}</Text>
           </View>
         ))}
@@ -46,7 +69,6 @@ export default Hobbies;
 const styles = StyleSheet.create({
   hobbiesContainer: {
     width: 300,
-    backgroundColor: "rgba(40, 40, 40, 0.4)",
     alignSelf: "center",
     borderRadius: 5,
     marginTop: 20,
@@ -65,7 +87,6 @@ const styles = StyleSheet.create({
   },
   hobbyItem: {
     padding: 15,
-    backgroundColor: "rgba(255, 165, 0, 0.1)",
     margin: 5,
     borderRadius: 5,
   },

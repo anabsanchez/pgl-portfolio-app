@@ -9,6 +9,20 @@ export type HeaderProps = {
   setLightTheme: Function;
 };
 
+const LIGHT_THEME = {
+  currentTab: "rgba(68, 15, 7, 1)",
+  otherTab: "rgba(239, 94, 47, 1)",
+  buttonsBackground: "rgba(239, 86, 47, 1)",
+  headerBackground: "rgba(239, 86, 47, .9)",
+};
+
+const DARK_THEME = {
+  currentTab: "rgba(0, 0, 0, 1)",
+  otherTab: "rgba(114, 158, 193, .5)",
+  buttonsBackground: "rgba(37, 46, 61, 1)",
+  headerBackground: "rgba(37, 46, 61, .6)",
+};
+
 const Header = ({
   displayQR,
   setDisplayQR,
@@ -16,8 +30,11 @@ const Header = ({
   setLightTheme,
 }: HeaderProps) => {
   // const theme = useContext(ThemeContext);
+  const themeColors = lightTheme ? LIGHT_THEME : DARK_THEME;
   return (
-    <View style={styles.header}>
+    <View
+      style={[styles.header, { backgroundColor: themeColors.headerBackground }]}
+    >
       <View style={styles.headerTop}>
         <Text style={styles.headerTitle}>My Portfolio</Text>
         <View>
@@ -30,16 +47,21 @@ const Header = ({
         </View>
       </View>
 
-      <View style={styles.headerButtons}>
+      <View
+        style={[
+          styles.headerButtons,
+          { backgroundColor: themeColors.buttonsBackground },
+        ]}
+      >
         <Button
           onPress={() => setDisplayQR(true)}
           title="Mi Info"
-          color={displayQR ? "rgba(0, 0, 0, 1)" : "rgba(255, 165, 0, 0)"}
+          color={displayQR ? themeColors.currentTab : themeColors.otherTab}
         />
         <Button
           onPress={() => setDisplayQR(false)}
           title="Mi Repo"
-          color={!displayQR ? "rgba(0, 0, 0, 1)" : "rgba(255, 165, 0, 0)"}
+          color={!displayQR ? themeColors.currentTab : themeColors.otherTab}
         />
       </View>
     </View>
@@ -73,7 +95,6 @@ const styles = StyleSheet.create({
   },
   headerButtons: {
     flexDirection: "row",
-    backgroundColor: "#1c2833",
     justifyContent: "space-between",
     paddingLeft: 75,
     paddingRight: 75,
